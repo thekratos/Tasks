@@ -6,25 +6,234 @@
     <title>Tasks</title>
     <link rel="stylesheet" href="view/styles.css" />
     <!-- Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Rubik:wght@300&display=swap" rel="stylesheet">
+    <link
+      href="https://fonts.googleapis.com/css2?family=Rubik:wght@300&display=swap"
+      rel="stylesheet"
+    />
+    <!--Fontawesome -->
+    <link
+      rel="stylesheet"
+      href="https://use.fontawesome.com/releases/v5.7.2/css/all.css"
+      integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr"
+      crossorigin="anonymous"
+    />
   </head>
   <body>
     <!-- Ventana Iniciar Sesion -->
-    <div class="contenedorVentanaModal">
+    <div id="VentanaModalIniciarSesion" class="contenedorVentanaModal">
       <div class="contenedorVentanaModal__flex">
         <div class="flex__contenidoModal">
+          <!-- Ventana Modal Header -->
           <div class="contenidoModal__headerContenido">
-            <h2 class="headerContenido__title">Iniciar Secion</h2>
-            <span class="headerContenido__botonCerrar" onclick="menuIniciarSecionCerrar()">
-              &times;
+            <h2 class="headerContenido__title">Iniciar Sesión</h2>
+            <span
+              class="headerContenido__botonCerrar"
+              onclick="VentanaModalBotonCerrar()"
+            >
+              <i class="fas fa-times"></i>
             </span>
           </div>
+          <!-- Ventana Modal Body -->
           <div class="contenidoModal__bodyContenido">
-           
+            <div class="bodyContenido__contenedorFormulario">
+              <!-- TextField Usuario-->
+              <p type="Usuario:" class="contenedorFormulario__textField">
+                <input
+                  id="txtUsuarioIniciarSecion"
+                  class="textField__inputText"
+                  type="text"
+                  name="txtUsuario"
+                />
+              </p>
+              <!-- TextField Contraseña -->
+              <p type="Contraseña:" class="contenedorFormulario__textField">
+                <input
+                  id="txtPasswordIniciarSecion"
+                  class="textField__inputText"
+                  type="password"
+                  name="txtPass"
+                />
+              </p>
+              <!-- Contenedor Botones -->
+              <div class="ventanaModal__contenedorBotones">
+                <!-- Boton Registrarse -->
+                <button
+                  type="button"
+                  class="ventanaModal__botonesGeneral"
+                  onclick="VentanaRegistrarAbrir()"
+                >
+                  Registrarse
+                </button>
+                <!-- Boton Iniciar -->
+                <button
+                  class="ventanaModal__botonesGeneral"
+                  type="submit"
+                  onclick="IniciarSesion()"
+                >
+                  Iniciar
+                </button>
+              </div>
+            </div>
           </div>
         </div>
       </div>
     </div>
-
+    <!-- Ventana Registrarse -->
+    <div id="VentanaModalRegistrarse" class="contenedorVentanaModal">
+      <div class="contenedorVentanaModal__flex">
+        <div class="flex__contenidoModal">
+          <!-- Ventana Modal Header -->
+          <div class="contenidoModal__headerContenido">
+            <h2 class="headerContenido__title">Registrarse</h2>
+            <span
+              class="headerContenido__botonCerrar"
+              onclick="VentanaModalBotonCerrar()"
+            >
+              <i class="fas fa-times"></i>
+            </span>
+          </div>
+          <!-- Ventana Modal Body -->
+          <div class="contenidoModal__bodyContenido">
+            <div class="bodyContenido__contenedorFormulario">
+              <!-- TextField Nombre -->
+              <p type="Nombres:" class="contenedorFormulario__textField">
+                <input
+                  id="txtNombreRegistro"
+                  class="textField__inputText"
+                  type="text"
+                  name="txtNombreRegistro"
+                />
+              </p>
+              <!-- TextField Apellido -->
+              <p type="Apellidos:" class="contenedorFormulario__textField">
+                <input
+                  id="txtApellidoRegistro"
+                  class="textField__inputText"
+                  type="text"
+                  name="txtApellidoRegistro"
+                />
+              </p>
+              <!-- TextField Correo -->
+              <p type="Correo:" class="contenedorFormulario__textField">
+                <input
+                  id="txtCorreoRegistro"
+                  class="textField__inputText"
+                  type="email"
+                  name="txtCorreoRegistro"
+                />
+              </p>
+              <!-- TextField Contraseña -->
+              <p type="Contrseña:" class="contenedorFormulario__textField">
+                <input
+                  id="txtContraseñaRegistro"
+                  class="textField__inputText"
+                  type="password"
+                  name="txtContaseñaRegistro"
+                />
+              </p>
+              <!-- Contenedor Botones -->
+              <div class="ventanaModal__contenedorBotones">
+                <!-- Boton Registrar -->
+                <button
+                  type="button"
+                  class="ventanaModal__botonesGeneral"
+                  onclick="RegistrarUsuario()"
+                >
+                  Registrar
+                </button>
+                <!-- Boton Iniciar -->
+                <button
+                  class="ventanaModal__botonesGeneral"
+                  type="submit"
+                  onclick="VentanaIniciarSesionAbrir()"
+                >
+                  Iniciar
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- Contenedor Principal -->
+    <div class="contenedorPrincipal">
+      <!-- Header -->
+      <header class="header">
+        <div class="header__contenedorLogo">
+          <i class="fas fa-tasks fa-4x contenedorLogo__icon"></i>
+          <h1 class="contenedorLogo__txt">Tasks</h1>
+        </div>
+        <h1
+          class="contenedorLogo__textUsuario"
+          id="contenedorLogo__textUsuario"
+        ></h1>
+      </header>
+      <!-- Contenedor Tarjetas-->
+      <div class="tarjetas">
+        <div class="tarjetas__contenedorTarjeta">
+          <a href="#" class="contenedorTrajeta__boton" onclick="materiaSeleccionada(i)">
+            <figure class="boton__tarjetaConEfecto">
+              <div class="tarjetaConEfecto__frente">
+                <div class="frente__logoTrajeta">
+                  <i class="fas fa-code fa-6x logoTarjeta__icon"></i>
+                  <h3 class="logoTarjeta__materia">Programacion</h3>
+                </div>
+              </div>
+              <figcaption class="tarjetaConEfecto__atras">
+                <h2 class="atras__titulo">
+                  Descripsion de la materia
+                </h2>
+                <p class="atrar__parrafo">
+                  Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                  Itaque illum quisquam tempora, nesciunt praesentium nihil odio
+                  nisi quos facilis quo?
+                </p>
+              </figcaption>
+            </figure>
+          </a>
+        </div>
+      </div>
+      <!-- Contenedor Tasks -->
+      <div class="tasks">
+        <div class="insertarTareas">
+          <input type="text" placeholder="titulo" id="tituloTarea" class="insertarTareas__inputs">
+          <input type="text" placeholder="Descripsion" id="descripsionTarea" class="insertarTareas__inputs">
+          <select name="nivelPrioridad" id="nivelPrioridad" class="insertarTareas__inputs">
+            <option>Baja</option>
+            <option>Media</option>
+            <option>Alta</option>
+          </select>
+          <button id="botonInsertarTareas" onclick="insertarTarea()" class="botonInsertarTareas">Guardar</button>
+        </div>
+        <div class="tareasContenedor">
+          <div class="tareasContenedor__tarea">
+            <div class="tarea__header">
+              <h1 class="headerTasks__titulo">tasks</h1>
+              <div class="headerTasks__NivelPrioridad">bajo</div>
+            </div>
+            <div class="tarea__body">
+              <p class="bodyTasks__descripsion">Lorem ipsum dolor sit amet consectetur adipisicing elit. Doloremque, quidem?</p>
+            </div>
+            <div class="tarea__footer">
+              <buttton class="footerTasks__boton">Delete</buttton>
+              <buttton class="footerTasks__boton tasksEditar">Editar</buttton>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- Firebase -->
+    <script src="https://www.gstatic.com/firebasejs/7.2.3/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.2.3/firebase-firestore.js"></script>
+    <!-- JQuery -->
+    <script
+      src="https://code.jquery.com/jquery-3.4.1.js"
+      integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU="
+      crossorigin="anonymous"
+    ></script>
+    <!-- SweetAlert -->
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+    <!-- Mis Scripts -->
+    <script src="controller/app.js"></script>
   </body>
 </html>

@@ -1,0 +1,114 @@
+/* ---- ---- Contenedores Ventana Modal ---- ---- */
+.contenedorVentanaModal {
+	display: block;
+	position: fixed;
+	z-index:1;
+	overflow: auto;
+	left: 0;
+	top:0;
+	width: 100%;
+	height:100%;
+	background: rgba(0, 0, 0, 0.452);
+}
+
+.contenedorVentanaModal__flex {
+	width: 100%;
+	height:100%;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+}
+
+.flex__contenidoModal {
+	position: relative;
+	background-color: #fefefe;
+	margin: auto;
+	width: 30%;
+	box-shadow: 0 0 6px 0 rgba(0, 0, 0, .4);
+	animation-name: modal;
+	animation-duration: 1s;
+}
+@keyframes modal {
+	from{top:-330px; opacity:0;}
+	to{top:0; opacity:1;}
+}
+/* ---- ---- Header Ventana Modal ---- ---- */
+.contenidoModal__headerContenido {
+	padding: 15px 16px;
+	background: #303F9F;
+	color:#f2f2f2;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+}
+.headerContenido__title {
+	padding: 10px;
+	font-size: 25px;
+}
+.headerContenido__botonCerrar{
+	padding: 8px 14px;
+	color: #f2f2f2;
+	font-size:30px;
+	font-weight: bold;
+}
+.headerContenido__botonCerrar:hover {
+	background: rgba(0, 0, 0, .2);
+	border-radius: 100%;
+	transition: 0.6s;
+	text-decoration: none;
+	cursor: pointer;
+}
+/* ---- ---- Body Ventana Modal ---- ---- */
+.contenidoModal__bodyContenido {
+	padding: 20px 16px;
+}
+/* ---- ---- Contenedor de Formulario ---- ---- */
+.bodyContenido__contenedorFormulario {
+	width:100%;
+	padding: 20px 25px;
+	padding-top: 0px;
+    box-sizing:border-box;
+	position:relative
+}
+.contenedorFormulario__textField:before {
+	content:attr(type);
+    display:block;
+    margin:28px 0 0;
+    font-size:14px;
+    color:#5a5a5a;
+}
+.textField__inputText {
+	width:100%;
+    padding:10px;
+    box-sizing:border-box;
+    background:none;
+    outline:none;
+    resize:none;
+    border:0;
+    color: #000000;
+    font-family:'Montserrat',sans-serif;
+    transition:all 3;
+    border-bottom:2px solid #1f53c5;
+}
+/* ---- ---- Botones Generales Ventana Modal */
+.ventanaModal__contenedorBotones {
+	width: 100%;
+	display: flex;
+	justify-content: center;
+}
+.ventanaModal__botonesGeneral {
+	background: white;
+    width: 45%;
+    color: #1f53c5;
+    text-decoration: none;
+	font-size: 15px;
+	margin: 5px;
+	margin-top: 35px;
+    padding: 10px;
+    border: 3px solid #1f53c5;
+}
+.ventanaModal__botonesGeneral:hover {
+	border:1px solid white;
+	background: #1f53c5;
+    color:#fff;
+}
