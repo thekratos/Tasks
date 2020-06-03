@@ -1,0 +1,97 @@
+/* ---- ---- Insertar Tarea ---- ---- */
+.tasks {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    flex-direction: row;
+}
+
+.insertarTareas {
+    width: 250px;
+    height: 300px;
+    box-shadow: 0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23);
+    background: #ffffff;
+    border-radius: 20px;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    margin: 10px;
+}
+
+.insertarTareas__inputs {
+    padding: 10px;
+    margin: 10px;
+    margin-right: 25px;
+    margin-left: 25px;
+    background: #ffffff;
+}
+.botonInsertarTareas {
+    background: #1A237E;
+    color: #ffffff;
+    border: 0;
+    padding: 10px;
+    margin: 10px;
+    margin-right: 55px;
+    margin-left: 55px;
+    border-radius: 5px;
+}
+.tareasContenedor {
+    display: flex;
+    flex-wrap: wrap;
+}
+/* ---- ---- Tarea Normal ---- ---- */
+.tareasContenedor__tarea {
+    margin: 10px;
+    width: 250px;
+    height: 300px;
+    box-shadow: 0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23);
+    background: #ffffff;
+    border-radius: 20px;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+}
+.tarea__header {
+    height: 75px;
+    background: #ece6e6;
+    border-top-right-radius: 20px;
+    border-top-left-radius: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.headerTasks__NivelPrioridad {
+    background: #C62828;
+    color: #ffffff;
+    padding: 2px 10px;
+    border-radius: 30px;
+}
+.tarea__body {
+    height: 150px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.bodyTasks__descripsion {
+    margin: 20px;
+}
+.tarea__footer {
+    height: 75px;
+    background: #ece6e6;
+    border-bottom-right-radius: 20px;
+    border-bottom-left-radius: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.footerTasks__boton {
+    background: #C62828;
+    color: #ffffff;
+    padding: 15px 20px;
+    border-radius: 10px;
+}
+.tasksEditar {
+    background: #1A237E;
+    margin-left: 10px;
+}

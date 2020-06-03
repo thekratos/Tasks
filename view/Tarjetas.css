@@ -1,0 +1,88 @@
+.tarjetas {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    flex-direction: row;
+}
+.tarjetas__contenedorTarjeta {
+    margin: 15px;
+}
+.tarjetas__contenedorTarjeta:hover .boton__tarjetaConEfecto{
+    -webkit-transform: perspective(600px) rotateY(180deg);
+    -ms-transform: perspective(600px) rotateY(180deg);
+    -o-transform: perspective(600px) rotateY(180deg);
+    transform: perspective(600px) rotateY(180deg);  
+}
+contenedorTrajeta__boton {
+    text-decoration: none;
+    display: inline-block;
+}
+.boton__tarjetaConEfecto {
+    width: 250px;
+    height: 300px;
+    position: relative;
+    transition: all ease .5s;
+    transform-style: preserve-3d;
+    transform: perspective(600px) rotateY(0deg);
+    box-shadow: 0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23);
+    background: #ffffff;
+    border-radius: 20px;
+}
+a {
+    text-decoration:none;
+}
+/* ---- ---- Tarjeta Frente ---- ---- */
+.tarjetaConEfecto__frente { 
+    width: 250px;
+    height: 300px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.frente__logoTrajeta {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+.logoTarjeta__icon {
+
+    color: #000000;
+}
+.logoTarjeta__materia {
+    color: #000000;
+}
+.tarjetaConEfecto__atras {
+    background: rgba(0,0,0,0.8);
+    border-radius: 20px;
+    width: 240px;
+    height: 290px;
+    transition: all ease .5s;
+    position: absolute;
+    top: 0px;
+    padding: 20px;
+    color: red;
+    transform: perspective(600px) rotateY(180deg);
+    backface-visibility: hidden;
+    overflow: auto;
+    display: flex;
+    padding: 5px;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    
+}
+.atras__titulo{
+    color: #ffffff;
+    font-weight: normal;
+    margin-bottom: 0px;
+    font-size: 20px;
+    margin: 15px;
+    text-align: center;
+    font-size: 25px;
+}
+
+.atrar__parrafo{
+    color: #ffffff;
+    margin: 15px;
+}
