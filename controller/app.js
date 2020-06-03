@@ -86,7 +86,7 @@ function SesionCorrecta() {
       button: "Aceptar",
     });
     $("#VentanaModalIniciarSesion").hide();
-    $('#contenedorLogo__textUsuario').text("Bienvenido " + datosUsuarioActivo[1]);
+    $('#contenedorLogo__textUsuario').text("Bienvenido " + datosUsuarioActivo[0]);
   }else {
     swal({
       title: "Error",
@@ -213,7 +213,8 @@ function insertarTarea() {
       titulo: datosTareas[0],
       descripsion: datosTareas[1],
       prioridad: datosTareas[2],
-      materia: materias[materiaSeleccionada].nombre
+      materia: materias[materiaSeleccionada].nombre,
+      idUsuario: datosUsuarioActivo[2]
     })
     .then(function(docRef) {
       console.log("Document written with ID: ", docRef.id);
@@ -236,7 +237,7 @@ function obtenerTareas() {
   var i = 0;
   db.collection("Tareas").get().then((querySnapshot) => {
     querySnapshot.forEach((doc) => {
-      if (doc.data().materia == materias[materiaSeleccionada].nombre) {
+      if (doc.data().materia == materias[materiaSeleccionada].nombre && datosUsuarioActivo[2] == doc.data().idUsuario) {
         tareas[i] = {
           titulo: doc.data().titulo,
           prioridad: doc.data().prioridad,
