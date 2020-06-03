@@ -1,7 +1,6 @@
 var estadoSesion = false;
 var datosUsuarioActivo = new Array();
 var materiaSeleccionada = 0;
-
 var materias = new Array();
 
 $(function () {
@@ -40,19 +39,7 @@ firebase.initializeApp({
   measurementId: "G-SEVEJWCX9E"
 });
 var db = firebase.firestore();
-/* buscar */
-db.collection("users").get().then((querySnapshot) => {
-  querySnapshot.forEach((doc) => {
-      console.log(`${doc.id} => ${doc.data().apellido}`);  
-  });
 
-});
-/* eliminar */
-db.collection("users").doc("0K7w91Hz24LyXHZbercN").delete().then(function() {
-  console.log("Document successfully deleted!");
-}).catch(function(error) {
-  console.error("Error removing document: ", error);
-});
 /* actualizar */
 function editar() {
 
@@ -154,10 +141,10 @@ function VentanaIniciarSesionAbrir() {
 /* ---- ---- Matriz CRUD BBDD ---- ---- */
 function InsertaDatosBBDD(datosUsuario) {
   db.collection("users").add({
-    nombre: datosUsuario[0],
-    apellido: datosUsuario[1],
-    correo: datosUsuario[2],
-    contraseña: datosUsuario[3]
+    nombre: datosUsuario[3],
+    apellido: datosUsuario[0],
+    correo: datosUsuario[1],
+    contraseña: datosUsuario[2]
   })
   .then(function(docRef) {
     console.log("Document written with ID: ", docRef.id);
