@@ -262,11 +262,26 @@ function obtenerTareas() {
   ConstruirTareas(tareas);
   });
 }
-function EliminarTareasBoton(idTarea) {
-  
-  
-  
-}
+$(document).on('click', '.footerTasks__boton', function() {
+  let idTareaPresionada = $(this).val();
+  console.log(idTareaPresionada);
+  db.collection("Tareas").doc(idTareaPresionada).delete().then(function() {
+    swal({
+      title: "Conseguido",
+      text: "Se a logrado eliminar la tarea",
+      icon: "success",
+      button: "Aceptar",
+    });
+    obtenerTareas();
+  }).catch(function(error) {
+    swal({
+      title: "Error",
+      text: "No se pudo eliminar la tarea: " + error,
+      icon: "warning",
+      button: "Aceptar",
+    });
+  });
+});
 function ConstruirTareas(tareas) {
   console.log(tareas);
   let tareasCreadas = "";
@@ -281,7 +296,7 @@ function ConstruirTareas(tareas) {
             "<p class='bodyTasks__descripsion'>"+tareas[i].descripsion+"</p>"+
           "</div>"+
           "<div class='tarea__footer'>"+
-            "<div class='footerTasks__boton' onclick='EliminarTareasBoton("+tareas[i].id+")'>Delete</div>"+
+            "<button class='footerTasks__boton' value="+tareas[i].id+">Delete</button>"+
             "<buttton class='footerTasks__boton tasksEditar'>Editar</buttton>"+
           "</div>"+
         "</div>"
