@@ -2,10 +2,12 @@ var estadoSesion = false;
 var datosUsuarioActivo = new Array();
 var materiaSeleccionada = 0;
 var materias = new Array();
+var tareaActual = 0;
 
 $(function () {
   $("#VentanaModalIniciarSesion").show();
   $("#VentanaModalRegistrarse").hide();
+  $("#VentanaModalEditarTarea").hide();
   $(".tasks").hide();
   obtenerMaterias();
 });
@@ -39,28 +41,6 @@ firebase.initializeApp({
   measurementId: "G-SEVEJWCX9E"
 });
 var db = firebase.firestore();
-
-/* actualizar */
-function editar() {
-
-
-  var datos_nuevos = db.collection("users").doc("6aPQDTkW1ZnXUf1dyY5s");
-
-  return datos_nuevos.update({
-    nombre: "ant",
-    apellido: "pen",
-    año: 1815
-    })
-  .then(function() {
-      console.log("Document successfully updated!");
-  })
-  .catch(function(error) {
-      // The document probably doesn't exist.
-      console.error("Error updating document: ", error);
-  });
-
-
-}
 /* Inicio de Sesion y Registrarse */
 function IniciarSesion() {
   datosInicioSesion = new Array();
@@ -250,7 +230,46 @@ function obtenerTareas() {
   ConstruirTareas(tareas);
   });
 }
-$(document).on('click', '.footerTasks__boton', function() {
+//boton editar de las tareas
+$(document).on('click', '.tasksEditar', function() {
+  let datosTareaPresionada = $(this).val().split(",", 3);
+  console.log($(this).val().split(",", 3))
+  VentanaEditarTarea(datosTareaPresionada)
+});
+function VentanaEditarTarea(datosTareaPresionada) {
+  tareaActual = datosTareaPresionada[0];
+  $("#tituloTareaEditar").val(datosTareaPresionada[1]);
+  $("#descripsionTareaEditar").val(datosTareaPresionada[2]);
+  $("#VentanaModalEditarTarea").show();
+}
+function EditarTarea() {
+  var datos_nuevos = db.collection("Tareas").doc(tareaActual);
+  return datos_nuevos.update({
+    titulo: $("#tituloTareaEditar").val(),
+    descripsion: $("#descripsionTareaEditar").val(),
+    prioridad: $("#nivelPrioridadEditar").val()
+    })
+  .then(function() {
+    swal({
+      title: "Bienvenido",
+      text: "Datos editados correctamente",
+      icon: "success",
+      button: "Aceptar",
+    });
+    $("#VentanaModalEditarTarea").hide();
+    obtenerTareas();
+  })
+  .catch(function(error) {
+        swal({
+      title: "Error",
+      text: "nos e logro actualizar la tarea",
+      icon: "warning",
+      button: "Aceptar",
+    });
+  });
+}
+//boton eliminar de las tareas
+$(document).on('click', '.taskEliminar', function() {
   let idTareaPresionada = $(this).val();
   console.log(idTareaPresionada);
   db.collection("Tareas").doc(idTareaPresionada).delete().then(function() {
@@ -284,8 +303,8 @@ function ConstruirTareas(tareas) {
             "<p class='bodyTasks__descripsion'>"+tareas[i].descripsion+"</p>"+
           "</div>"+
           "<div class='tarea__footer'>"+
-            "<button class='footerTasks__boton' value="+tareas[i].id+">Delete</button>"+
-            "<buttton class='footerTasks__boton tasksEditar'>Editar</buttton>"+
+            "<button class='footerTasks__boton taskEliminar' value="+tareas[i].id+">Delete</button>"+
+            "<button class='footerTasks__boton tasksEditar' value="+[tareas[i].id,tareas[i].titulo,tareas[i].descripsion]+">Editar</button>"+
           "</div>"+
         "</div>"
     );

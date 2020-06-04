@@ -155,6 +155,36 @@
         </div>
       </div>
     </div>
+    <!-- Ventana editar tarea -->
+    <div id="VentanaModalEditarTarea" class="contenedorVentanaModal">
+      <div class="contenedorVentanaModal__flex">
+        <div class="flex__contenidoModal">
+          <!-- Ventana Modal Header -->
+          <div class="contenidoModal__headerContenido">
+            <h2 class="headerContenido__title">Editar Tarea</h2>
+            <span
+              class="headerContenido__botonCerrar"
+              onclick="VentanaModalBotonCerrar()"
+            >
+              <i class="fas fa-times"></i>
+            </span>
+          </div>
+          <!-- Ventana Modal Body -->
+          <div class="contenidoModal__bodyContenido ventanaModalEditarTareaBody">
+            <div class="insertarTareas">
+              <input type="text" placeholder="titulo" id="tituloTareaEditar" class="insertarTareas__inputs">
+              <input type="text" placeholder="Descripción" id="descripsionTareaEditar" class="insertarTareas__inputs">
+              <select name="nivelPrioridad" id="nivelPrioridadEditar" class="insertarTareas__inputs">
+                <option>Baja</option>
+                <option>Media</option>
+                <option>Alta</option>
+              </select>
+              <button id="botonInsertarTareasEditar" class="botonInsertarTareas" onclick="EditarTarea()">Editar</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
     <!-- Contenedor Principal -->
     <div class="contenedorPrincipal">
       <!-- Header -->
@@ -169,7 +199,7 @@
         ></h1>
       </header>
       <!-- Contenedor Tarjetas-->
-      <div class="tarjetas">
+      <div class="tarjetas" >
         <div class="tarjetas__contenedorTarjeta">
           <a href="#" class="contenedorTrajeta__boton" onclick="materiaSeleccionada(i)">
             <figure class="boton__tarjetaConEfecto">
@@ -197,7 +227,7 @@
       <div class="tasks">
         <div class="insertarTareas">
           <input type="text" placeholder="titulo" id="tituloTarea" class="insertarTareas__inputs">
-          <input type="text" placeholder="Descripsion" id="descripsionTarea" class="insertarTareas__inputs">
+          <input type="text" placeholder="Descripción" id="descripsionTarea" class="insertarTareas__inputs">
           <select name="nivelPrioridad" id="nivelPrioridad" class="insertarTareas__inputs">
             <option>Baja</option>
             <option>Media</option>

@@ -12,3 +12,9 @@ body {
     font-family: 'Rubik', sans-serif;
     background: #e2e1e0;;
 }
+/* editar tarea */
+.ventanaModalEditarTareaBody {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
