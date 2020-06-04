@@ -69,11 +69,11 @@
 }
 .tarea__body {
     height: 150px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
 }
 .bodyTasks__descripsion {
+    display: flex;
+    flex-direction: column;
+    text-align: center;
     margin: 20px;
 }
 .tarea__footer {
@@ -94,4 +94,19 @@
 .tasksEditar {
     background: #1A237E;
     margin-left: 10px;
+}
+/* ---- ---- Navbar Tareas ---- ---- */
+.navbarTareas {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 15px;
+}
+.TituloMateriaSelecicionada {
+    width: 70%;
+    display: flex;
+}
+.botonVolverMaterias {
+
 }

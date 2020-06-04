@@ -290,6 +290,7 @@ $(document).on('click', '.taskEliminar', function() {
   });
 });
 function ConstruirTareas(tareas) {
+  $('.TituloMateriaSelecicionada').text(materias[materiaSeleccionada].nombre)
   console.log(tareas);
   let tareasCreadas = "";
   for (let i = 0; i< tareas.length; i++) {
@@ -310,4 +311,8 @@ function ConstruirTareas(tareas) {
     );
   }
   $('.tareasContenedor').html(tareasCreadas);
+}
+function volverMaterias() {
+  $(".tarjetas").show();
+  $(".tasks").hide();
 }
